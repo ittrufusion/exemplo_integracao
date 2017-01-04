@@ -2,12 +2,12 @@ swagger: '2.0'
 
 info:
   version: "1.0.0"
-  title: AssijusSystem
-  description: Micro-serviço para listar documentos, obter o hash, salvar assinaturas e visualizar PDFs compatível com o sistema Assijus
+  title: IttruSystem
+  description: Micro-serviço para listar documentos, obter o hash, salvar assinaturas e visualizar PDFs compatível com o sistema Ittru Fusion.
 
-# host: assijus.jfrj.jus.br
-basePath: /tnusigner/api/v1
-schemes: [http]
+host: ittrufusion.appspot.com
+basePath: /testsigner/api/v1
+schemes: [http,https]
 consumes: [application/json]
 produces: [application/json]
 
@@ -16,6 +16,8 @@ tags:
     description: Listar os documentos a serem assinado e visualizar os PDFs
   - name: sign
     description: Obter o hash e gravar a assinatura digital
+  - name: auth
+    description: Verificar a autenticidade de um documento
 
 paths:
   /doc/list:
@@ -138,7 +140,7 @@ paths:
   /doc/{id}/info:
     get:
       description: Obtem as assinaturas e as movimentações do documento
-      tags: [sign]
+      tags: [auth]
       parameters:
         - $ref: "#/parameters/id"
       responses:
@@ -169,7 +171,7 @@ paths:
   /sign/{ref}:
     get:
       description: Obter uma assinatura de um documento
-      tags: [sign]
+      tags: [auth]
       parameters:
         - $ref: "#/parameters/ref"
       responses:
@@ -220,20 +222,18 @@ parameters:
     type: string
   sha1:
     name: sha1
-    required: false
-    type: string
-    format: byte
-  sha256:
-    name: sha256
+    in: formData
     required: false
     type: string
     format: byte
   name:
     name: name
+    in: formData
     required: false
     type: string
   time:
     name: time
+    in: formData
     required: false
     type: string
     format: date-time
@@ -246,6 +246,7 @@ parameters:
     format: byte
   extra:
     name: extra
+    in: formData
     required: false
     type: string
 
@@ -307,8 +308,28 @@ definitions:
       description:
         type: string
 
+  ErrorDetail:
+    type: object
+    properties:
+      service:
+        type: string
+      context:
+        type: string
+      stacktrace:
+        type: string
+      url:
+        type: string
+      presentable:
+        type: boolean
+      logged:
+        type: boolean
+
   Error:
     type: object
     properties:
-      error:
+      errormsg:
         type: string
+      errordetails:
+        type: array
+        items:
+          $ref: "#/definitions/ErrorDetail"
