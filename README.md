@@ -97,7 +97,12 @@ Resposta:
 }
 ```
 
-## Garantindo o Sigilo
-Para que seu webservice não possa ser acessado por um usuário mal intencionado, ele deve ser protegido por um código de autorização. Esse código deve ser um [GUID aleatório](https://www.guidgenerator.com/) e será compartilhado apenas com o Fusion. Toda vez que o Fusion chamar seu webservice, ele enviará este código no HTTP Header "Authorization". Seu webservice deve funcionar apenas em HTTPS para proteger esse código.
+## Protegendo seu Webservice
+Para que seu webservice não possa ser acessado por um usuário mal intencionado, ele deve ser protegido por um código de autorização. Esse código deve ser um [GUID aleatório](https://www.guidgenerator.com/) e será compartilhado apenas com o Fusion. Toda vez que o Fusion chamar seu webservice, ele enviará este código no HTTP Header "Authorization". 
 
-Cada documento deverá possuir um segredo, também. Quando seu webservice listar os documentos pendentes de assinatura, ele informará ao Fusion qual é o segredo (secret) de cada documento. Outros retornos de chamadas ao seu webservice deverão repetir o mesmo segredo para cada documento. Comparando o segredo original e os segredos retornados posteriormente, o Fusion garante que não houve nenhuma falha de segurança e, consequentemente, protege o sigilo de todos seus documentos.
+Seu webservice deve funcionar apenas em HTTPS para proteger esse código.
+
+## Garantindo o Sigilo dos Seus Documentos
+Cada documento deverá possuir um segredo que pode ser um GUID ou outra string qualquer. Quando seu webservice listar os documentos pendentes de assinatura, ele informará ao Fusion qual é o segredo (secret) de cada documento. Outros retornos de chamadas ao seu webservice deverão repetir o mesmo segredo para cada documento. 
+
+Comparando o segredo original e os segredos retornados posteriormente, o Fusion garante que não houve nenhuma falha de segurança e, consequentemente, protege o sigilo de todos seus documentos.
