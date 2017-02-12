@@ -1,5 +1,5 @@
-# Exemplo integracao com o ittru fusion
-O exemplo em Java é uma aplicação que integra-se ao ittru fusion. Seguindo o mesmo modelo você pode integrar a sua aplicação a ele.
+# Exemplo integracao com o Fusion
+O exemplo em Java é uma aplicação que integra-se ao Fusion. Seguindo o mesmo modelo você pode integrar a sua aplicação a ele.
 
 A integração ocorre por meio de webservices REST que estão documentados por um [Arquivo Swagger](https://raw.githubusercontent.com/ittrufusion/exemplo_integracao/master/src/main/resources/com/ittru/fusion/example/swagger.yaml). User o [Editor do Swagger](http://editor.swagger.io/#/) para visualizar a documentação e gerar artefatos compatíveis com diversas linguagens de programação.
 
