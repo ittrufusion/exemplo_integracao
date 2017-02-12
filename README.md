@@ -4,10 +4,10 @@ O exemplo em Java é uma aplicação que integra-se ao Fusion. Seguindo o mesmo 
 A integração ocorre por meio de webservices REST que estão documentados por um [Arquivo Swagger](https://raw.githubusercontent.com/ittrufusion/exemplo_integracao/master/src/main/resources/com/ittru/fusion/example/swagger.yaml). User o [Editor do Swagger](http://editor.swagger.io/#/) para visualizar a documentação e gerar artefatos compatíveis com diversas linguagens de programação.
 
 
-## Integrando com um novo sistema
-Para incluir um novo sistema, é necessário apenas que ele seja capaz de responder a 4 métodos REST:
+## Integrando Seu Sistema com o Fusion
+Para que o Fusion possa interagir com seu sistema, é necessário apenas que seu sistema seja capaz de responder a 4 métodos REST:
 
-1. list: a partir do CPF do usuário, faz uma pesquisa no banco de dados e retorna a lista de documentos a serem assinados. Para cada documento, deve ser informado o identificador, um segredo que garante o sigilo do documento, o número, a descrição e o tipo. O identificador é um campo que deve ser único para cada documento. O segredo deve ser uma string qualquer, que é diferente para cada documento. Uma pessoa que tenha acesso ao segredo, poderá pedir para visualizar o PDF.
+1. list: a partir do CPF do usuário, faz uma pesquisa no banco de dados e retorna a lista de documentos a serem assinados. Para cada documento, deve ser informado o identificador, o número, a descrição, o tipo e um segredo (será explicado abaixo).
 
 Exemplo de requisição:
 ```http
