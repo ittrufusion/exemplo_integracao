@@ -7,7 +7,8 @@ A integração ocorre por meio de webservices REST que estão documentados por u
 ## Integrando Seu Sistema com o Fusion
 Para que o Fusion possa interagir com seu sistema, é necessário apenas que seu sistema seja capaz de responder a 4 métodos REST:
 
-1. list: a partir do CPF do usuário, faz uma pesquisa no banco de dados e retorna a lista de documentos a serem assinados. Para cada documento, deve ser informado o identificador, o número, a descrição, o tipo e um segredo (será explicado abaixo).
+### 1. List
+A partir do CPF do usuário, faz uma pesquisa no banco de dados e retorna a lista de documentos a serem assinados. Para cada documento, deve ser informado o identificador, o número, a descrição, o tipo e um segredo (será explicado abaixo).
 
 Exemplo de requisição:
 ```http
@@ -37,7 +38,8 @@ Resposta:
 }
 ```
 
-2. hash: a partir do identificador do documento, retornar os hashes SHA1 e SHA256 do PDF. Além disso, se houver interesse em produzir assinaturas sem política no padrão PKCS7, retornar o conteúdo do PDF se for solicitado.
+### 2. Hash
+A partir do identificador do documento, retornar os hashes SHA1 e SHA256 do PDF. Além disso, se houver interesse em produzir assinaturas sem política no padrão PKCS7, retornar o conteúdo do PDF se for solicitado.
 
 Exemplo de requisição:
 ```http
@@ -55,7 +57,8 @@ Resposta:
 ```
 
 
-3. save: a partir do identificador do documento e de uma assintura, gravar essa assinatura no banco de dados.
+### 3. Save
+A partir do identificador do documento e de uma assintura, gravar essa assinatura no banco de dados.
 
 Exemplo de requisição:
 ```http
@@ -81,7 +84,8 @@ Resposta:
   "status": "OK"
 }
 ```
-4. view: a partir do identificador do documento, retornar o conteúdo do PDF.
+### 4. Pdf
+A partir do identificador do documento, retornar o conteúdo do PDF.
 
 Exemplo de requisição:
 ```http
