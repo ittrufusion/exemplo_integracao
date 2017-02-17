@@ -15,8 +15,8 @@ public class TestSignerServlet extends SwaggerServlet {
 
 		super.setAPI(IIttruSystem.class);
 
-		super.setActionPackage("br.jus.trf2.testsigner");
+		super.setActionPackage("com.ittru.fusion.example");
 
-		super.setAuthorization(SwaggerUtils.getProperty("testsigner.password", null));
+		super.setAuthorization(SwaggerUtils.getProperty("ittrufusion.example.password", null));
 	}
 }
