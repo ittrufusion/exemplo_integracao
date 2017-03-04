@@ -120,6 +120,8 @@ paths:
         - $ref: "#/parameters/sha1" 
         - $ref: "#/parameters/extra" 
         - $ref: "#/parameters/envelope" 
+        - $ref: "#/parameters/policy" 
+        - $ref: "#/parameters/policyversion" 
       responses:
         200:
           description: Successful response
@@ -162,6 +164,17 @@ paths:
               secret:
                 type: string
                 description: Segredo associado ao documento que será validado para permitir a visualização
+              code: 
+                type: string
+              descr: 
+                type: string
+              kind: 
+                type: string
+              origin: 
+                type: string
+              extra: 
+                type: string
+                
         500:
           description: Error ocurred
           schema:
@@ -249,6 +262,16 @@ parameters:
     in: formData
     required: false
     type: string
+  policy:
+    name: policy
+    in: formData
+    required: false
+    type: string
+  policyversion:
+    name: policyversion
+    in: formData
+    required: false
+    type: string
 
             
 definitions:
@@ -263,14 +286,19 @@ definitions:
         description: segredo associado ao documento, se não for informado, qualquer pessoa poderá visualizar seu PDF. Deve ser usada uma senha bem grande, de preferência, um GUID ou um SHA256.
       code: 
         type: string
+        description: Código ou número do documento conforme deve ser apresentado para o usuário
       descr: 
         type: string
+        description: Descrição ou título do documento
       kind: 
         type: string
+        description: Tipo do documento ou espécie documental
       origin: 
         type: string
+        description: Nome amigável do sistema
       extra: 
         type: string
+        description: Opcionalmente informar outros dados relacionados ao documento
     example:
       id: 00489623760_2_67631650_1460490840000_0_0
       code: 0100222-90.2014.4.02.0000

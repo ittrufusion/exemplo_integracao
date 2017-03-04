@@ -36,8 +36,18 @@ public interface IIttruSystem {
 		public String description;
 	}
 
+	public class ErrorDetail implements ISwaggerModel {
+		public String service;
+		public String context;
+		public String stacktrace;
+		public String url;
+		public Boolean presentable;
+		public Boolean logged;
+	}
+
 	public class Error implements ISwaggerModel {
-		public String error;
+		public String errormsg;
+		public List<ErrorDetail> errordetails;
 	}
 
 	public class DocListGetRequest implements ISwaggerRequest {
@@ -97,6 +107,8 @@ public interface IIttruSystem {
 		public byte[] sha1;
 		public String extra;
 		public byte[] envelope;
+		public String policy;
+		public String policyversion;
 	}
 
 	public class DocIdSignPutResponse implements ISwaggerResponse {
@@ -118,6 +130,11 @@ public interface IIttruSystem {
 		public List<Signature> signature;
 		public List<Movement> movement;
 		public String secret;
+		public String code;
+		public String descr;
+		public String kind;
+		public String origin;
+		public String extra;
 	}
 
 	public interface IDocIdInfoGet extends ISwaggerMethod {
